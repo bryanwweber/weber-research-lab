@@ -55,15 +55,6 @@ source_parsers = {
     '.md': CommonMarkParser
 }
 
-
-# app setup hook
-def setup(app):
-    app.add_config_value('recommonmark_config', {
-        'enable_eval_rst': True,
-    }, True)
-    app.add_transform(AutoStructify)
-
-
 source_suffix = ['.rst', '.md']
 
 # The master toctree document.
@@ -101,14 +92,12 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 # Path should be relative to the ``_static`` files directory.
 # html_logo = "my_logo.png"
 
-# Theme options are theme-specific and customize the look and feel of a
-# theme further.
 html_theme_options = {
     # Navigation bar title. (Default: ``project`` value)
     'navbar_title': "WRL",
 
     # Tab name for entire site. (Default: "Site")
-    'navbar_site_name': "Site",
+    'navbar_site_name': "WRL",
 
     # A list of tuples containing pages or urls to link to.
     # Valid tuples should be in the following forms:
@@ -129,7 +118,7 @@ html_theme_options = {
     'navbar_pagenav': False,
 
     # Tab name for the current pages TOC. (Default: "Page")
-    'navbar_pagenav_name': "Page",
+    # 'navbar_pagenav_name': "Page",
 
     # Global TOC depth for "site" navbar tab. (Default: 1)
     # Switching to -1 shows all levels.
@@ -146,7 +135,7 @@ html_theme_options = {
 
     # HTML navbar class (Default: "navbar") to attach to <div> element.
     # For black navbar, do "navbar navbar-inverse"
-    'navbar_class': "navbar",
+    'navbar_class': "navbar navbar-inverse",
 
     # Fix navigation bar to top of page?
     # Values: "true" (default) or "false"
@@ -154,7 +143,7 @@ html_theme_options = {
 
     # Location of link to source.
     # Options are "nav" (default), "footer" or anything else to exclude.
-    'source_link_position': "nav",
+    'source_link_position': "footer",
 
     # Bootswatch (http://bootswatch.com/) theme.
     #
@@ -245,3 +234,12 @@ texinfo_documents = [
      author, 'WeberResearchLab', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+
+# app setup hook
+def setup(app):
+    app.add_config_value('recommonmark_config', {
+        'enable_eval_rst': True,
+    }, True)
+    app.add_transform(AutoStructify)
+    app.add_stylesheet("my-styles.css")
